@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
         <title>Peep</title>
         <link rel="icon" href="favicon2.ico" type="image/gif">
-        <link rel="stylesheet" href="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="stylesheet" href="bootstrap/css/bootstrap.css.map">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css.map">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css.map">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
       <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -44,11 +44,15 @@
                 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
                 var panelToAdd = "<div class='panel-body'><p>"+textToAdd+"</p><small class='pull-right'><i>"+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</i></small></div>";
                 $(".panel-heading").after(panelToAdd);
-                $(".panel-body").hover(function(){
+                $(".panel-body").hover(function(){ //add hover effect
                     $(this).addClass('highlighted');
                 },function(){
                     $(this).removeClass('highlighted');
                 });
+                //we add 1 to the tweet count
+                var tweets = document.getElementById("peepnb").innerHTML ;
+                document.getElementById("peepnb").innerHTML = parseInt(tweets) + 1 ;
+                 //now we reset things:
                 $("#charsleft").removeClass("text-danger");
                 $("textarea").val('');
                 document.getElementById("charsleft").innerHTML = '140 characters left';
@@ -119,11 +123,27 @@
                 <div class="bs-example">
                     <div class="media">
                 <a href="#" class="pull-left">
-                    <img src="http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg" class="media-object" alt="Sample Image">
+                    <img src="icon.png" height="64px" width="64px" class="media-object" alt="Sample Image">
                 </a>
                      <div class="media-body">
-                    <h4 class="media-heading">John Doe </h4>
+                    <h4 class="media-heading">John Doe <small><i>@doe</i></small></h4>
                     <p>Information about user</p>
+                    <table class="table-condensed">
+							<thead>
+								<tr>
+									<th>Tweets</th>
+									<th>Followers</th>
+									<th>Following</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="peepnb">3</td>
+									<td>3</td>
+									<td>4</td>
+								</tr>
+							</tbody>
+						</table>
                             </div>
                         </div>
                     </div>
@@ -152,15 +172,15 @@
                     <h1 class="panel-title">John's Peeps</h1>
                 </div>
                 <div class="panel-body">
-                    <p>Blabla</p>
+                    <p>I have things to say, places to be.</p>
                     <small class="pull-right"><i>January 8, 2015</i></small>
                 </div>
                 <div class="panel-body">
-                    <p>More blabla</p>
+                    <p>... but it was aliens.</p>
                     <small class="pull-right"><i>January 8, 2015</i></small>
                 </div>
                 <div class="panel-body">
-                    <p>Guess what? Blabla</p>
+                    <p>I'm not saying it was aliens...</p>
                     <small class="pull-right"><i>January 8, 2015</i></small>
                 </div>
                 </div>
