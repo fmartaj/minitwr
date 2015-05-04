@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
         <title>Peep</title>
-        <link rel="icon" href="favicon.ico" type="image/gif">
+        <link rel="icon" href="favicon2.ico" type="image/gif">
         <link rel="stylesheet" href="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="stylesheet" href="bootstrap/css/bootstrap.css.map">
@@ -21,14 +21,16 @@
 
           .highlighted {
         -webkit-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-    box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
+		-moz-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
+		box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
         cursor:pointer;
         }
-            body{
+        
+        body{
             padding-top: 20px;
-            }
-            textarea {
+         }
+            
+         textarea {
             margin-bottom: 3px;
             }
         </style>
@@ -91,7 +93,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="http://sweetclipart.com/multisite/sweetclipart/files/imagecache/middle/baby_chick_yellow.png" class="navbar-brand"/>
+                <img src="http://images.clipartpanda.com/penguin-clip-art-RTAKKdyTL.png" class="navbar-brand"/>
                 <a class="navbar-brand" href="userhome.html">Peep</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -99,7 +101,7 @@
     </nav>
   
 
- <!-- USER INFORMATION AND COPYRIGHT -->
+<!-- navigation interne (home, messages, etc) --> 
     <div  class="container">
     <div class="page-header" >
          <ul class="nav nav-pills">
@@ -110,6 +112,8 @@
         </ul>
     </div>
     
+    
+  <!-- information sur l'utilisateur et copyright -->   
        <div class="row">
             <div class="col-xs-4">
                 <div class="bs-example">
@@ -131,8 +135,8 @@
                 </footer>
             </div>    
 
-    <!-- USER PEEPS -->
-    
+    <!-- les messages ou "peeps" -->
+		<!-- ecrire un nouveau message -->
             <div class="col-xs-8">
                 <form role="form">
                     <div class="form-group">
@@ -142,7 +146,7 @@
                     <button id="peep" type="submit" class="btn btn-primary pull-right" disabled>Peep</button>
                     </div>
                 </form>
-                
+           <!-- afficher les messages des autres utilisateurs -->     
                 <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="panel-title">John's Peeps</h1>
