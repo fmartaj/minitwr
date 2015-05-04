@@ -1,11 +1,11 @@
 
 #Mini Twitter
 
-*Contributors*: fmartaj, gomesfernandes, Mehlhase Clémence
+*Contributors*: fmartaj, gomesfernandes, cmehlhase
 
 *Created on*: 30/03/15
 
-*Last updated*: 30/03/15
+*Last updated*: 05/04/15
 
 
 ## Description
