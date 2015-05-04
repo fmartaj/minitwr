@@ -34,6 +34,14 @@
             margin-bottom: 3px;
             }
             
+           th {
+			color: rgb(173, 173, 173);
+			}
+            
+            td, .thighlight {
+				color:rgb(51, 153, 255);
+			}
+            
         </style>
     
         <script>
@@ -68,6 +76,14 @@
                 },function(){
                     $(this).removeClass('highlighted');
                 });
+                
+            
+            $("th").hover(function(){
+                    $(this).addClass('thighlight');
+                },function(){
+                    $(this).removeClass('thighlight');
+                });
+                
            });
           
            
@@ -133,7 +149,7 @@
 						<table class="table-condensed">
 							<thead>
 								<tr>
-									<th>Tweets</th>
+									<th>Peeps</th>
 									<th>Followers</th>
 									<th>Following</th>
 								</tr>
@@ -215,7 +231,7 @@
                         </a>
                         <div class="media-body">
                         <h4 class="media-heading">John Doe <small><i>@doe</i></small></h4>
-                         <p>I have things to say, places to be.</p>
+                         <p>Things and stuff.</p>
                          <small class="pull-right"><i>January 8, 2015</i></small>
                         </div>
                     </div>

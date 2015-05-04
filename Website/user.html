@@ -33,6 +33,15 @@
          textarea {
             margin-bottom: 3px;
             }
+            
+             th {
+			color: rgb(173, 173, 173);
+			}
+            
+            td, .thighlight {
+				color:rgb(51, 153, 255);
+			}
+            
         </style>
     
         <script>
@@ -64,6 +73,13 @@
                     $(this).addClass('highlighted');
                 },function(){
                     $(this).removeClass('highlighted');
+                });
+                
+                
+            $("th").hover(function(){
+                    $(this).addClass('thighlight');
+                },function(){
+                    $(this).removeClass('thighlight');
                 });
            });
             
@@ -172,7 +188,7 @@
                     <h1 class="panel-title">John's Peeps</h1>
                 </div>
                 <div class="panel-body">
-                    <p>I have things to say, places to be.</p>
+                    <p>Things and stuff.</p>
                     <small class="pull-right"><i>January 8, 2015</i></small>
                 </div>
                 <div class="panel-body">
