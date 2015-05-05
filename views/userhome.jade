@@ -1,0 +1,304 @@
+doctype html(lang='en')
+head
+    meta(charset='UTF-8')
+    |         
+    title Peep
+    |         
+    link(rel='icon', href='favicon2.ico', type='image/gif')
+    |         
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.min.css')
+    |         
+    link(rel='stylesheet', href='bootstrap/css/bootstrap-theme.min.css')
+    |         
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css.map')
+    |         
+    link(rel='stylesheet', href='bootstrap/css/bootstrap-theme.css.map')
+    |         
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css')
+    |       
+    script(src='bootstrap/js/bootstrap.min.js')
+    |         
+    script(src='bootstrap/js/bootstrap.npm.js')
+    |         
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    |     
+    |         
+    style(type='text/css').
+      .panel-body   {
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+      }
+      .highlighted {
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
+      box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
+      cursor:pointer;
+      }
+      body{
+      padding-top: 20px;
+      }
+      textarea {
+      margin-bottom: 3px;
+      }
+      th {
+      color: rgb(173, 173, 173);
+      }
+      td, .thighlight {
+      color:rgb(51, 153, 255);
+      }
+    |     
+    |         
+    script.
+      $(document).ready(function(){
+      //ACTION DU BOUTON: AJOUTER UN PEEP
+      $("#peep").on('click', function(event) {
+      var textToAdd = $("textarea").val(); //contains our peep
+      var d = new Date();
+      var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      var mediaToAdd = "<div class='panel-body'><div class='media'><a href='#' class='pull-left'><img src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg' class='media-object img-circle'  alt='User Picture'></a><div class='media-body'><h4 class='media-heading'>John Doe </h4><p>"+textToAdd+"</p><small class='pull-right'><i>"+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</i></small></div></div></div>";
+      $(".panel-heading").after(mediaToAdd);
+      $(".panel-body").hover(function(){ //add hover effect
+      $(this).addClass('highlighted');
+      },function(){
+      $(this).removeClass('highlighted');
+      });
+      //we add 1 to the tweet count
+      var tweets = document.getElementById("peepnb").innerHTML ;
+      document.getElementById("peepnb").innerHTML = parseInt(tweets) + 1 ;
+      //now we reset things:
+      $("#charsleft").removeClass("text-danger");
+      $("textarea").val('');
+      document.getElementById("charsleft").innerHTML = '140 characters left';
+      document.getElementById("peep").disabled = true;
+      return false;
+      });
+      //EFFET CHIC SI LA SOURIS PASSE SUR LES PEEPS :)
+      $(".panel-body").hover(function(){
+      $(this).addClass('highlighted');
+      },function(){
+      $(this).removeClass('highlighted');
+      });
+      $("th").hover(function(){
+      $(this).addClass('thighlight');
+      },function(){
+      $(this).removeClass('thighlight');
+      });
+      });
+      //COMPTEUR DE CARACTÈRES
+      function charCount() {
+      var phrase = document.getElementById("comment").value;
+      document.getElementById("charsleft").innerHTML = (140-phrase.length)+' characters left';
+      document.getElementById("peep").disabled = false;
+      if (phrase.length == 0) {
+      document.getElementById("peep").disabled = true;
+      };
+      if (phrase.length >= 120) {
+      $("#charsleft").addClass("text-danger");
+      } else {
+      $("#charsleft").removeClass("text-danger");
+      };
+      };
+  body
+    // NAVIGATEUR
+    nav#myNavbar.navbar.navbar-default.navbar-inverse.navbar-fixed-top(role='navigation')
+      // Brand and toggle get grouped for better mobile display
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbarCollapse')
+            span.sr-only Toggle navigation
+            |                     
+            span.icon-bar
+            |                     
+            span.icon-bar
+            |                     
+            span.icon-bar
+          |                 
+          img.navbar-brand(src='http://images.clipartpanda.com/penguin-clip-art-RTAKKdyTL.png')
+          |                 
+          a.navbar-brand(href='userhome.html') Peep
+        // Collect the nav links, forms, and other content for toggling
+    // USER INFORMATION AND COPYRIGHT
+    .container
+      .page-header
+        ul.nav.nav-pills
+          li.active
+            a(href='userhome.html') Home
+          |             
+          li
+            a(href='user.html') Profile
+          |             
+          li
+            a(href='#') Messages
+          |             
+          li
+            a(href='#')
+              | Notification  
+              span.badge
+      |     
+      |        
+      .row
+        .col-xs-4
+          .media
+            a.pull-left(href='#')
+              img.media-object(src='icon.png', height='64px', width='64px', alt='Sample Image')
+            |                      
+            .media-body
+              h4.media-heading
+                | John Doe 
+                small
+                  i @doe
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9; 
+              br
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              table.table-condensed
+                thead
+                  tr
+                    th Peeps
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    th Followers
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    th Following
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                tbody
+                  tr
+                    td#peepnb 3
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    td 3
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    td 4
+          |             
+          |                     
+          br
+          |                 
+          footer
+            hr
+            |                     
+            p &copy; Copyright 2015 Peep
+        // USER PEEPS
+        .col-xs-8
+          form(role='form')
+            .form-group
+              label(for='comment') Add a new Peep:
+              |                       
+              textarea#comment.form-control(maxlength='140', placeholder="What's on your mind?", oninput='charCount()')
+              |                     
+              label#charsleft(for='wordcount') 140 characters left
+              |                     
+              button#peep.btn.btn-primary.pull-right(type='submit', disabled='') Peep
+          |                 
+          |                 
+          .panel.panel-default
+            .panel-heading
+              h1.panel-title All Peeps
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media-object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | Vladimir Vodka 
+                    small
+                      i @vladi
+                  |                          
+                  p This guy said stuff.
+                  |                         
+                  small.pull-right
+                    i January 10, 2015
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media-object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | Jack Daniels 
+                    small
+                      i @jacki
+                  |                          
+                  p This one too.
+                  |                          
+                  small.pull-right
+                    i January 9, 2015
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media.object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | Tim Tequila 
+                    small
+                      i @timi
+                  |                          
+                  p White boy status.
+                  |                          
+                  small.pull-right
+                    i January 8, 2015
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media.object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | John Doe 
+                    small
+                      i @doe
+                  |                          
+                  p Things and stuff.
+                  |                          
+                  small.pull-right
+                    i January 8, 2015
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media.object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | John Doe 
+                    small
+                      i @doe
+                  |                          
+                  p ... but it was aliens.
+                  |                          
+                  small.pull-right
+                    i January 8, 2015
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media.object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | John Doe 
+                    small
+                      i @doe
+                  |                          
+                  p I&apos;m not saying it was aliens...
+                  |                          
+                  small.pull-right
+                    i January 8, 2015
+            |                 
+            .panel-body
+              .media
+                a.pull-left(href='#')
+                  img.media.object.img-circle(src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg', alt='User Picture')
+                |                         
+                .media-body
+                  h4.media-heading
+                    | Ano Nyme 
+                    small
+                      i @anne
+                  |                          
+                  p White girl status.
+                  |                          
+                  small.pull-right
+                    i January 7, 2015
