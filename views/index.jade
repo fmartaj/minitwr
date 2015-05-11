@@ -84,10 +84,15 @@ block content
                         p= tweet
                         |                          
                         small.pull-right
-                            script.
-                                - var d = new Date()
-                                - var months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
-                            i months[d.getMonth()] d.getDate(), d.getFullYear()
+                            -function prettyDate(){
+                                -var d = new Date()
+                                -var monthNames  = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+                                -var m = monthNames[d.getMonth()];
+                                -var y = d.getFullYear();
+                                -return d.getDate()+' '+m+' '+y;
+                            -}
+                            i #{prettyDate()}
+                            
             .panel-body
               .media
                 a.pull-left(href='#')
