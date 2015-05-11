@@ -4,7 +4,7 @@ $(document).ready(function(){
                 var textToAdd = $("textarea").val(); //contains our peep
                 var d = new Date();
                 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-                var mediaToAdd = "<div class='panel-body'><div class='media'><a href='#' class='pull-left'><img src='http://www.tutorialrepublic.com/examples/images/avatar-tiny.jpg' class='media-object img-circle'  alt='User Picture'></a><div class='media-body'><h4 class='media-heading'>John Doe </h4><p>"+textToAdd+"</p><small class='pull-right'><i>"+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</i></small></div></div></div>";
+                var mediaToAdd = "<div class='panel-body'><div class='media'><a href='#' class='pull-left'><img src='/images/icon.png', height='64px', width='64px', class='media-object img-circle'  alt='User Picture'></a><div class='media-body'><h4 class='media-heading'>John Doe <small><i>@doe</i></small></h4><p>"+textToAdd+"</p><small class='pull-right'><i>"+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</i></small></div></div></div>";
                 
                 $(".panel-heading").after(mediaToAdd);
                 $(".panel-body").hover(function(){ //add hover effect
