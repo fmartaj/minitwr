@@ -27,5 +27,4 @@ router.post('/', function(req, res, next) {
 router.get('/user', function(req, res, next) {
   res.render('user', { title: 'Express', tweets: tweets });
 });
-
 module.exports = router;

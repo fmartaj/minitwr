@@ -1,104 +1,6 @@
-doctype html(lang='en')
-head
-    meta(charset='UTF-8')
-    |         
-    title Peep
-    |         
-    link(rel='icon', href='favicon2.ico', type='image/gif')
-    |         
-    link(rel='stylesheet', href='bootstrap/css/bootstrap.min.css')
-    |         
-    link(rel='stylesheet', href='bootstrap/css/bootstrap-theme.min.css')
-    |         
-    link(rel='stylesheet', href='bootstrap/css/bootstrap.css.map')
-    |         
-    link(rel='stylesheet', href='bootstrap/css/bootstrap-theme.css.map')
-    |         
-    link(rel='stylesheet', href='bootstrap/css/bootstrap.css')
-    |       
-    script(src='bootstrap/js/bootstrap.min.js')
-    |         
-    script(src='bootstrap/js/bootstrap.npm.js')
-    |         
-    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
-    |     
-    |         
-    style(type='text/css').
-      .panel-body   {
-      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-      }
-      .highlighted {
-      -webkit-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-      -moz-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-      box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-      cursor:pointer;
-      }
-      body{
-      padding-top: 20px;
-      }
-      textarea {
-      margin-bottom: 3px;
-      }
-      th {
-      color: rgb(173, 173, 173);
-      }
-      td, .thighlight {
-      color:rgb(51, 153, 255);
-      }
-    |     
-    |         
-    script.
-      $(document).ready(function(){
-      //ACTION DU BOUTON: AJOUTER UN PEEP
-      $("#peep").on('click', function(event) {
-      var textToAdd = $("textarea").val();
-      var d = new Date();
-      var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-      var panelToAdd = "<div class='panel-body'><p>"+textToAdd+"</p><small class='pull-right'><i>"+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</i></small></div>";
-      $(".panel-heading").after(panelToAdd);
-      $(".panel-body").hover(function(){ //add hover effect
-      $(this).addClass('highlighted');
-      },function(){
-      $(this).removeClass('highlighted');
-      });
-      //we add 1 to the tweet count
-      var tweets = document.getElementById("peepnb").innerHTML ;
-      document.getElementById("peepnb").innerHTML = parseInt(tweets) + 1 ;
-      //now we reset things:
-      $("#charsleft").removeClass("text-danger");
-      $("textarea").val('');
-      document.getElementById("charsleft").innerHTML = '140 characters left';
-      document.getElementById("peep").disabled = true;
-      return false;
-      });
-      //EFFET CHIC SI LA SOURIS PASSE SUR LES PEEPS :)
-      $(".panel-body").hover(function(){
-      $(this).addClass('highlighted');
-      },function(){
-      $(this).removeClass('highlighted');
-      });
-      $("th").hover(function(){
-      $(this).addClass('thighlight');
-      },function(){
-      $(this).removeClass('thighlight');
-      });
-      });
-      //COMPTEUR DE CARACTÈRES
-      function charCount() {
-      var phrase = document.getElementById("comment").value;
-      document.getElementById("charsleft").innerHTML = (140-phrase.length)+' characters left';
-      document.getElementById("peep").disabled = false;
-      if (phrase.length == 0) {
-      document.getElementById("peep").disabled = true;
-      };
-      if (phrase.length >= 120) {
-      $("#charsleft").addClass("text-danger");
-      } else {
-      $("#charsleft").removeClass("text-danger");
-      };
-      };
-  body
+extends layout
+
+block navi
     // NAVIGATEUR
     nav#myNavbar.navbar.navbar-default.navbar-inverse.navbar-fixed-top(role='navigation')
       // Brand and toggle get grouped for better mobile display
@@ -134,6 +36,7 @@ head
             a(href='#')
               | Notification  
               span.badge
+block content
       // information sur l'utilisateur et copyright
       .row
         .col-xs-4
