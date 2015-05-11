@@ -52,7 +52,11 @@ block content
                     th Following
                 tbody
                   tr
-                    td#peepnb 2
+                    -function peepcount(){
+                        -var count = 2+tweets.length;
+                        -return count;
+                    -}
+                    td#peepnb #{peepcount()}
                     td 3
                     td 4
           br
@@ -92,7 +96,6 @@ block content
                                 -return d.getDate()+' '+m+' '+y;
                             -}
                             i #{prettyDate()}
-                            
             .panel-body
               .media
                 a.pull-left(href='#')
@@ -103,18 +106,6 @@ block content
                     small
                       i @timi
                   p White boy status.
-                  small.pull-right
-                    i January 8, 2015
-            .panel-body
-              .media
-                a.pull-left(href='#')
-                  img.media.object.img-circle(src='/images/icon.png', height='64px', width='64px',alt='User Picture')
-                .media-body
-                  h4.media-heading
-                    | John Doe 
-                    small
-                      i @doe
-                  p Things and stuff.
                   small.pull-right
                     i January 8, 2015
             .panel-body

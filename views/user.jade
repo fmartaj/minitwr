@@ -53,7 +53,7 @@ block content
                     i @doe
                 |                     
                 p 20, penguin, love my bird family
-                |                     
+                | 
                 table.table-condensed
                   thead
                     tr
@@ -65,11 +65,13 @@ block content
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                   tbody
                     tr
-                      td#peepnb 2
-                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                      td 3
-                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                      td 4
+                        -function peepcount(){
+                            -var count = 2+tweets.length;
+                            -return count;
+                        -}
+                        td#peepnb #{peepcount()}
+                        td 3
+                        td 4
           |                     
           br
           |                     
