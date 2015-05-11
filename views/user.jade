@@ -83,11 +83,11 @@ block content
         // les messages ou "peeps"
         // ecrire un nouveau message
         .col-xs-8
-          form(role='form')
+          form(role='form', action='/user', method='POST')
             .form-group
               label(for='comment') Add a new Peep:
               |                       
-              textarea#comment.form-control(maxlength='140', placeholder="What's on your mind?", oninput='charCount()')
+              textarea#comment.form-control(name="tweet", maxlength='140', placeholder="What's on your mind?", oninput='charCount()')
               |                     
               label#charsleft(for='wordcount') 140 characters left
               |                     
@@ -96,12 +96,12 @@ block content
           .panel.panel-default
             .panel-heading
               h1.panel-title John&apos;s Peeps
-            |                 
-            .panel-body
-              p Things and stuff.
-              |                     
-              small.pull-right
-                i January 8, 2015
+            each tweet in tweets
+                .panel-body
+                    p= tweet 
+                    |                     
+                    small.pull-right
+                        i January 8, 2015
             |                 
             .panel-body
               p ... but it was aliens.
@@ -113,4 +113,4 @@ block content
               p I&apos;m not saying it was aliens...
               |                     
               small.pull-right
-
+                i January 8, 2015

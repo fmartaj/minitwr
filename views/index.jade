@@ -61,39 +61,30 @@ block content
             p © Copyright 2015 Peep
         // USER PEEPS
         .col-xs-8
-          form(role='form')
+          form(role='form', action='/', method='POST')
             .form-group
               label(for='comment') Add a new Peep:
-              textarea#comment.form-control(maxlength='140', placeholder="What's on your mind?", oninput='charCount()')
+              textarea#comment.form-control(name="tweet", maxlength='140', placeholder="What's on your mind?", oninput='charCount()')
               label#charsleft(for='wordcount') 140 characters left
               button#peep.btn.btn-primary.pull-right(type='submit', disabled='') Peep
           .panel.panel-default
             .panel-heading
               h1.panel-title All Peeps
-            .panel-body
-              .media
-                a.pull-left(href='#')
-                  img.media-object.img-circle(src='/images/fox.png', height='64px', width='64px',alt='User Picture')
-                .media-body
-                  h4.media-heading
-                    | Vladimir Vodka 
-                    small
-                      i @vladi
-                  p This guy said stuff.
-                  small.pull-right
-                    i January 10, 2015
-            .panel-body
-              .media
-                a.pull-left(href='#')
-                  img.media-object.img-circle(src='/images/elephant.png', height='64px', width='64px',alt='User Picture')
-                .media-body
-                  h4.media-heading
-                    | Jack Daniels 
-                    small
-                      i @jacki
-                  p This one too.
-                  small.pull-right
-                    i January 9, 2015
+            each tweet in tweets
+                .panel-body 
+                  .media
+                    a.pull-left(href='#')
+                      img.media-object.img-circle(src='/images/icon.png', height='64px', width='64px',alt='User Picture')
+                    .media-body
+                        h4.media-heading
+                            | John Doe 
+                            small
+                                i @doe
+                        |                          
+                        p= tweet
+                        |                          
+                        small.pull-right
+                            i January 10, 2015
             .panel-body
               .media
                 a.pull-left(href='#')
@@ -153,4 +144,4 @@ block content
                       i @anne
                   p White girl status.
                   small.pull-right
-                   
+                    i January 8, 2015

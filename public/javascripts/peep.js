@@ -1,5 +1,6 @@
 $(document).ready(function(){
-            //ACTION DU BOUTON: AJOUTER UN PEEP
+        $("#myModal").modal('show');
+        /*    //ACTION DU BOUTON: AJOUTER UN PEEP
             $("#peep").on('click', function(event) {
                 var textToAdd = $("textarea").val(); //contains our peep
                 var d = new Date();
@@ -21,7 +22,7 @@ $(document).ready(function(){
                 document.getElementById("charsleft").innerHTML = '140 characters left';
                 document.getElementById("peep").disabled = true;
                 return false;
-        });  
+        });  */
             
             //EFFET CHIC SI LA SOURIS PASSE SUR LES PEEPS :) 
            $(".panel-body").hover(function(){

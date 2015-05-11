@@ -20,11 +20,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', tweets: tweets });
 });
 
+
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'Express', tweets: tweets });
+});
+
 router.post('/', function(req, res, next) {
     tweets.unshift(req.body.tweet);
     res.redirect('/')
 });
-router.get('/user', function(req, res, next) {
-  res.render('user', { title: 'Express', tweets: tweets });
+
+router.post('/user', function(req, res, next) {
+    tweets.unshift(req.body.tweet);
+    res.redirect('user')
 });
+
 module.exports = router;
