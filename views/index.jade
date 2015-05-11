@@ -11,7 +11,7 @@ block navi
             span.icon-bar
             span.icon-bar
           img.navbar-brand(src='http://images.clipartpanda.com/penguin-clip-art-RTAKKdyTL.png')
-          a.navbar-brand(href='home.html') Peep
+          a.navbar-brand(href='/') Peep
         // Collect the nav links, forms, and other content for toggling
         #navbarCollapse.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
@@ -52,7 +52,7 @@ block content
                     th Following
                 tbody
                   tr
-                    td#peepnb 3
+                    td#peepnb 2
                     td 3
                     td 4
           br
@@ -84,7 +84,10 @@ block content
                         p= tweet
                         |                          
                         small.pull-right
-                            i January 10, 2015
+                            script.
+                                - var d = new Date()
+                                - var months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+                            i months[d.getMonth()] d.getDate(), d.getFullYear()
             .panel-body
               .media
                 a.pull-left(href='#')
