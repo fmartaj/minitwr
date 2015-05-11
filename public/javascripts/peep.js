@@ -1,5 +1,4 @@
 $(document).ready(function(){
-        $("#myModal").modal('show');
         /*    //ACTION DU BOUTON: AJOUTER UN PEEP
             $("#peep").on('click', function(event) {
                 var textToAdd = $("textarea").val(); //contains our peep
