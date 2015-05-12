@@ -4,102 +4,13 @@
     <meta charset="UTF-8">
         <title>Peep</title>
         <link rel="icon" href="favicon2.ico" type="image/gif">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css.map">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css.map">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-      <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap.npm.js"></script>
-        <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    
-        <style type="text/css">
-         .panel-body   {
-         -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-              box-shadow: 0 1px 2px rgba(0, 0, 0, .1);    
-        } 
-
-          .highlighted {
-        -webkit-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-		-moz-box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-		box-shadow: 0px 0px 10px 0px rgba(150,182,245,1);
-        cursor:pointer;
-        }
-        
-        body{
-            padding-top: 20px;
-         }
-            
-         textarea {
-            margin-bottom: 3px;
-            }
-            
-             th {
-			color: rgb(173, 173, 173);
-			}
-            
-            td, .thighlight {
-				color:rgb(51, 153, 255);
-			}
-            
-        </style>
-    
-        <script>
-        $(document).ready(function(){
-            //ACTION DU BOUTON: AJOUTER UN PEEP
-            $("#peep").on('click', function(event) {
-                var textToAdd = $("textarea").val();
-                var d = new Date();
-                var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-                var panelToAdd = "<div class='panel-body'><p>"+textToAdd+"</p><small class='pull-right'><i>"+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</i></small></div>";
-                $(".panel-heading").after(panelToAdd);
-                $(".panel-body").hover(function(){ //add hover effect
-                    $(this).addClass('highlighted');
-                },function(){
-                    $(this).removeClass('highlighted');
-                });
-                //we add 1 to the tweet count
-                var tweets = document.getElementById("peepnb").innerHTML ;
-                document.getElementById("peepnb").innerHTML = parseInt(tweets) + 1 ;
-                 //now we reset things:
-                $("#charsleft").removeClass("text-danger");
-                $("textarea").val('');
-                document.getElementById("charsleft").innerHTML = '140 characters left';
-                document.getElementById("peep").disabled = true;
-                return false;
-        });  
-            //EFFET CHIC SI LA SOURIS PASSE SUR LES PEEPS :) 
-           $(".panel-body").hover(function(){
-                    $(this).addClass('highlighted');
-                },function(){
-                    $(this).removeClass('highlighted');
-                });
-                
-                
-            $("th").hover(function(){
-                    $(this).addClass('thighlight');
-                },function(){
-                    $(this).removeClass('thighlight');
-                });
-           });
-            
-        //COMPTEUR DE CARACTÈRES
-            function charCount() {
-                var phrase = document.getElementById("comment").value;
-                document.getElementById("charsleft").innerHTML = (140-phrase.length)+' characters left';
-                document.getElementById("peep").disabled = false;
-                
-                if (phrase.length == 0) {
-                    document.getElementById("peep").disabled = true;
-                };
-                
-                if (phrase.length >= 120) {
-                    $("#charsleft").addClass("text-danger");
-                } else {
-                    $("#charsleft").removeClass("text-danger");
-                };
-            };
-        </script>
+        <link rel="stylesheet" href="user.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script  src="peep.js"></script>
 </head>
 <body>
                      <!--NAVIGATEUR -->
@@ -127,8 +38,27 @@
          <ul class="nav nav-pills">
             <li><a href="userhome.html">Home</a></li>
             <li class="active"><a href="user.html">Profile</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Notification  <span class="badge"></span></a></li>
+            <li><!-- Button HTML (to Trigger Modal) -->
+                    <a href="#myModal" class="btn btn-link" data-toggle="modal"><span class="glyphicon glyphicon-envelope"></span> Messages</a>
+                    <!-- Modal HTML -->
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Messages</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Actually, we didn't finish this part.</p>
+                                    <p class="text-warning"><small>But here's a fancy modal.</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Uh, thanks?</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </li>
         </ul>
     </div>
     
@@ -143,11 +73,11 @@
                 </a>
                      <div class="media-body">
                     <h4 class="media-heading">John Doe <small><i>@doe</i></small></h4>
-                    <p>Information about user</p>
+                    <p>20, penguin, love my bird family</p>
                     <table class="table-condensed">
 							<thead>
 								<tr>
-									<th>Tweets</th>
+									<th>Peeps</th>
 									<th>Followers</th>
 									<th>Following</th>
 								</tr>
@@ -184,26 +114,26 @@
                 </form>
            <!-- afficher les messages des autres utilisateurs -->     
                 <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h1 class="panel-title">John's Peeps</h1>
-                </div>
-                <div class="panel-body">
-                    <p>Things and stuff.</p>
-                    <small class="pull-right"><i>January 8, 2015</i></small>
-                </div>
-                <div class="panel-body">
-                    <p>... but it was aliens.</p>
-                    <small class="pull-right"><i>January 8, 2015</i></small>
-                </div>
-                <div class="panel-body">
-                    <p>I'm not saying it was aliens...</p>
-                    <small class="pull-right"><i>January 8, 2015</i></small>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+                    <div class="panel-heading">
+                        <h1 class="panel-title">John's Peeps</h1>
+                    </div>
+                    <div class="panel-body">
+                        <p>Things and stuff.</p>
+                        <small class="pull-right"><i>January 8, 2015</i></small>
+                    </div>
+                    <div class="panel-body">
+                        <p>... but it was aliens.</p>
+                        <small class="pull-right"><i>January 8, 2015</i></small>
+                    </div>
+                    <div class="panel-body">
+                        <p>I'm not saying it was aliens...</p>
+                        <small class="pull-right"><i>January 8, 2015</i></small>
+                    </div>
+                </div> <!-- end panel default -->
+           </div> <!-- end col-xs-8 -->
+        </div>  <!-- end row -->
+    </div> <!-- end container -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.npm.js"></script>
 </body>
 </html>                                		
