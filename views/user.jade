@@ -25,20 +25,28 @@ block navi
         ul.nav.nav-pills
           li
             a(href='/') Home
-          |             
           li.active
             a(href='/user') Profile
-          |             
           li
-            a(href='#') Messages
-          |             
-          li
-            a(href='#')
-              | Notification  
-              span.badge
-block content
-    .container  
-      // information sur l'utilisateur et copyright
+            a.btn.btn-link(href='#myModal', data-toggle='modal')
+                span.glyphicon.glyphicon-envelope
+                |  Messages
+            #myModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                            |                                     
+                            h4.modal-title Messages
+                        |                                 
+                        .modal-body
+                            p Actually, we didn&apos;t really add this page.
+                            |                                     
+                            p.text-warning
+                                small But here&apos;s a fancy modal.
+                            |                                 
+                        .modal-footer
+                            button.btn.btn-primary(type='button', data-dismiss='modal') Uh, thanks?
       .row
         .col-xs-4
           .bs-example
@@ -53,11 +61,11 @@ block content
                     i @doe
                 |                     
                 p 20, penguin, love my bird family
-                |                     
+                | 
                 table.table-condensed
                   thead
                     tr
-                      th Tweets
+                      th Peeps
                       | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                       th Followers
                       | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
@@ -65,11 +73,13 @@ block content
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                   tbody
                     tr
-                      td#peepnb 2
-                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                      td 3
-                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                      td 4
+                        -function peepcount(){
+                            -var count = 2+tweets.length;
+                            -return count;
+                        -}
+                        td#peepnb #{peepcount()}
+                        td 3
+                        td 4
           |                     
           br
           |                     
@@ -106,7 +116,7 @@ block content
                                 -var monthNames  = ["January","February","March","April","May","June","July","August","September","October","November","December"]
                                 -var m = monthNames[d.getMonth()];
                                 -var y = d.getFullYear();
-                                -return d.getDate()+' '+m+' '+y;
+                                -return m+' '+d.getDate()+', '+y;
                             -}
                             i #{prettyDate()}
             |                 
